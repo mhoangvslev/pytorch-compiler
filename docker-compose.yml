@@ -1,0 +1,18 @@
+version: '3'
+services:     
+  pytorch-compiler:
+    container_name: pytorch-compiler
+    network_mode: "host"
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        PYTHON_VER:
+        CUDA_DOCKER_TAG:
+        PYTORCH_VER:
+    devices:
+      - /dev/nvidia0:/dev/nvidia0
+      - /dev/nvidiactl:/dev/nvidiactl
+      - /dev/nvidia-modeset:/dev/nvidia-modeset
+      - /dev/nvidia-uvm:/dev/nvidia-uvm
+      - /dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools
